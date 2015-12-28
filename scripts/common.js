@@ -5,6 +5,7 @@
 
 $(".search-box").keydown(function(e) {
     if (e.keyCode == 13) {
+        $('.results li').remove();
         search(this.value);
     }
 });
