@@ -1,5 +1,7 @@
 .header {
     margin: 50px;
+    font-weight: bolder;
+    color: #663399;
 }
 
 .search-box,.random-btn {
