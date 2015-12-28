@@ -3,16 +3,31 @@
  *     Author: Bobby Lin
  */
 
-$(".search-box").keydown(function(e) {
-    if (e.keyCode == 13) {
-        $('.results li').remove();
-        search(this.value);
-    }
-});
-
 var base_url = "http://en.wikipedia.org/w/api.php?";
 var format = "&format=json";
 var callback = "&callback=?";
+
+$(".search-box").keydown(function(e) {
+    if (e.keyCode == 13) {
+        $(".ui-menu-item").hide();
+        $('.results li').remove();
+        search(this.value);
+        this.value = "";
+    }
+});
+
+$(".search-box").keyup(function() {
+    var keywords = this.value;
+    var action = "action=opensearch";
+    var search = "&search=" + keywords;
+    var url = base_url + action + format + search + callback;
+    $.getJSON(url, function(data) {
+        var titles = data[1];
+        $("#keywords").autocomplete({
+            source: titles
+        });
+    })
+});
 
 function showRandom() {
     $('.results li').remove();
@@ -33,7 +48,6 @@ function showRandom() {
 function search(keywords) {
     var action = "action=opensearch";
     var search = "&search=" + keywords;
-    
     var url = base_url + action + format + search + callback;
     $.getJSON(url, function(data) {
         var titles = data[1];
@@ -44,8 +58,4 @@ function search(keywords) {
             $(".results").append(html);
         }
     })
-}
-
-function auto_suggest(e) {
-    // To Do
 }
