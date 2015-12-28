@@ -10,12 +10,30 @@ $(".search-box").keydown(function(e) {
     }
 });
 
+var base_url = "http://en.wikipedia.org/w/api.php?";
+var format = "&format=json";
+var callback = "&callback=?";
+
+function showRandom() {
+    $('.results li').remove();
+    var action = "action=query";
+    var wiki_url_with_id = "https://en.wikipedia.org/wiki/?curid=";
+    var generator = "&generator=random";
+    var grnNameSpace = "&grnnamespace=0";
+    var url = base_url + action + format + generator + grnNameSpace + callback;
+    $.getJSON(url, function(data) {
+        var key = Object.keys(data.query.pages)[0];
+        var link = wiki_url_with_id + key;
+        var title = data.query.pages[key].title;
+        var html = "<li><a href='"+ link +"' target='_blank'>" + title + "</a></li>";
+        $(".results").append(html);
+    });
+}
+
 function search(keywords) {
-    var base_url = "http://en.wikipedia.org/w/api.php?";
     var action = "action=opensearch";
-    var format = "&format=json";
     var search = "&search=" + keywords;
-    var callback = "&callback=?";
+    
     var url = base_url + action + format + search + callback;
     $.getJSON(url, function(data) {
         var titles = data[1];
