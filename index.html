@@ -10,8 +10,12 @@
 <body>
   <h1 class="text-center header">Wikipedia Viewer</h1>
   <div class="container">
-    <input class="search-box" type="text" onkeyup="auto_suggest(this)">
-    <button class="btn btn-default random-btn" onclick="showRandom()">Random article</button>
+    <div class="row">
+      <button class="btn btn-default random-btn" onclick="showRandom()">Random article</button>
+    </div>
+    <div class="row">
+      <input class="search-box" type="text" onkeyup="auto_suggest(this)">
+    </div>
   </div>
   <div class="container">
     <ul class="results"></ul>
