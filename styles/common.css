@@ -1,10 +1,48 @@
+li {
+    font-size: medium;
+    margin: 10px;
+}
+
 .header {
     margin: 50px;
     font-weight: bolder;
     color: #663399;
 }
 
-.search-box,.random-btn {
+.search {
+    display: table;
+    margin: 0 auto;
+}
+
+.search-box {
+    background-color: #ecf0f1;
+    color: black;
+    border-color: rebeccapurple;
+    margin-top: 30px;
+    height: 30px;
+    width: 250px;
+    padding-left: 10px;
+}
+
+.search-icon {
+    color: #9E9E9E;
+    margin-left: 5px;
+    font-size: small;
+}
+
+.random-btn {
     display: block;
     margin: 20px auto;
+    background-color: #BE90D4;
+    color: white;
+}
+
+.random-btn:hover {
+    background-color: #ecf0f1;
+    color: #8e44ad;
+}
+
+.result-box {
+    padding-left: 150px;
+    padding-top: 50px;
 }
