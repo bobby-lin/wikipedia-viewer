@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <title>Wikipedia Viewer</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="styles/common.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body>
   <h1 class="text-center header">Wikipedia Viewer</h1>
@@ -13,11 +15,14 @@
     <div class="row">
       <button class="btn btn-default random-btn" onclick="showRandom()">Random article</button>
     </div>
-    <div class="row">
-      <input class="search-box" type="text" onkeyup="auto_suggest(this)">
+    <div class="search">
+      <label>
+        <input id="keywords" class="search-box" type="text">
+        <i class="glyphicon glyphicon-search search-icon"></i>
+      </label>
     </div>
   </div>
-  <div class="container">
+  <div class="container result-box">
     <ul class="results"></ul>
   </div>
   <script src="scripts/common.js"></script>
